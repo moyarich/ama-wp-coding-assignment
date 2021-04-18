@@ -43,9 +43,5 @@ export default function Openweather() {
     );
   }
 
-  return (
-    <div className="weather-wrapper">
-      <Forecast weatherData={forecastData} />
-    </div>
-  );
+  return <Forecast weatherData={forecastData} />;
 }
