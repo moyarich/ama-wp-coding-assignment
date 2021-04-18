@@ -1,15 +1,20 @@
 {
-	"apiVersion": 2,
-	"name": "ama/weather",
-	"title": "Ama Weather",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "A fancy weather block!",
-	"supports": {
-		"html": false
-	},
-	"textdomain": "ama-weather",
-	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+  "apiVersion": 2,
+  "name": "ama/weather",
+  "title": "Ama Weather",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "A fancy weather block!",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  },
+  "textdomain": "ama-weather",
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/index.css",
+  "style": "file:./build/style-index.css"
 }
