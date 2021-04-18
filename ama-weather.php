@@ -8,6 +8,15 @@
  * Text Domain:       ama-weather
  */
 
+require_once dirname( __FILE__ ) . '/inc/class-ama-weather.php';
+require_once dirname( __FILE__ ) . '/inc/class-ama-weather-settings.php';
+require_once dirname( __FILE__ ) . '/inc/get-weather-data.php';
+require_once dirname( __FILE__ ) . '/inc/flatten-weather-data.php';
+require_once dirname( __FILE__ ) . '/inc/forecast.php';
+if ( is_admin() ){ new Ama_Weather_Settings();}
+
+
+
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it registers also all assets so they can be enqueued
@@ -23,14 +32,33 @@ function create_block_ama_weather_block_init() {
 }
 
 function render_weather_block( array $attributes ): string {
-	$class = 'ama-weather-block';
+	$class = isset( $attributes["className"]) ? "{$attributes["className"]} ama-weather-block" :"ama-weather-block";
 
 	ob_start();
 	?>
     <div class="<?php echo esc_attr( $class ); ?>">
+
         <!-- Block title here -->
+		
+		<?php if( !empty($attributes['title'])){ ?>
+			
+		<?php } ?>
+		<div class="ama-wx-block-title"><?php echo $attributes['title']; ?></div>
         <!-- Current temperature here -->
+		<div class="awa-forecast-wrapper">
+			<?php 
+
+			$response = get_weather_data();
+			$cityData =  $response->get_data();
+
+			$normalizedCityData = flatten_weather_data($cityData);
+			echo forecast($normalizedCityData);
+	
+			?>
+		</div>
     </div>
 	<?php
 	return ob_get_clean();
 }
+
+
