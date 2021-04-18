@@ -11,10 +11,9 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
-import { PanelBody, TextControl } from "@wordpress/components";
-import ServerSideRender from "@wordpress/server-side-render";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 
+import Openweather from "./components/Openweather.js";
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -38,17 +37,16 @@ export default function Edit({ attributes, setAttributes }) {
 
   return (
     <div {...blockProps}>
-      <InspectorControls key="controls">
-        <PanelBody title={__("AMA Weather Settings")}>
-          <TextControl
-            label={__("Title", "ama-weather")}
-            value={attributes.title}
-            onChange={(title) => setAttributes({ title })}
-            placeholder={__("Title (optional)", "ama-weather")}
-          />
-        </PanelBody>
-      </InspectorControls>
-      <ServerSideRender block="ama/weather" attributes={attributes} />
+      <div className="ama-weather-block">
+        <RichText
+          tagName="div"
+          className="ama-wx-block-title"
+          value={attributes.title}
+          onChange={(tcontent) => setAttributes({ title: tcontent })}
+          placeholder={__("Title (optional)", "ama-weather")}
+        />
+        <Openweather />
+      </div>
     </div>
   );
 }

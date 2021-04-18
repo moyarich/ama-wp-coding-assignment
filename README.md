@@ -52,3 +52,9 @@ gather all of the requirements:
 - **moyarich-feat-weather-server-side-rendering**
 
   [Plugin uses ServerSideRender to display the weather block in the editor ](/documentation/implementing-ssr.md)
+
+<u>Most recent Branch:</u>
+
+- **moyarich-feat-weather-render-from-custom-rest-api-route**
+
+  [Plugin uses a custom rest API route to display the weather block in the editor ](/documentation/implementing-custom-route.md)
