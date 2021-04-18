@@ -13,6 +13,9 @@ require_once dirname( __FILE__ ) . '/inc/class-ama-weather-settings.php';
 require_once dirname( __FILE__ ) . '/inc/get-weather-data.php';
 require_once dirname( __FILE__ ) . '/inc/flatten-weather-data.php';
 require_once dirname( __FILE__ ) . '/inc/forecast.php';
+
+require_once dirname( __FILE__ ) . '/inc/weather-api-zipcode.php';
+
 if ( is_admin() ){ new Ama_Weather_Settings();}
 
 
